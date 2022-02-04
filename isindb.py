@@ -16,7 +16,10 @@ def get_isin_by_asset_class(asset_class):
     return record
 
 def create_isin(record):
-    isins.insert(record)
+
+    record['_id'] = record["ISIN"]["ISIN"]
+    isins.insert_one(record)
+
 
 if __name__ == "__main__":
     pprint.pprint(get_isin("EZMJTKLTNSF4"))
